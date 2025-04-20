@@ -12,7 +12,6 @@
     <form id="new-comment-form" class="comment-form" method="post" action="{% url 'ajax_add_comment' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ comment_form.as_p }}
-   
     <button type="submit">Send</button>
     </form>
     <div id="new-comment-result"></div>
@@ -83,12 +82,11 @@ $(document).off('submit', '.comment-form').on('submit', '.comment-form', functio
                 if (!$form.is('#new-comment-form')) $form.hide();
                 location.reload();
             } else {
-                let errorMsg = '<ul style="color:red;">';
+                let errorMsg = '';
                 $.each(response.errors, function(field, messages) {
-                    errorMsg += `<li>${field}: ${messages.join(', ')}</li>`;
+                    errorMsg += `${field}: ${messages.join(', ')}\n`;
                 });
-                errorMsg += '</ul>';
-                resultBox.html(errorMsg);
+                alert(errorMsg);
             }
         },
         error: function(xhr) {

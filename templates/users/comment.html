@@ -22,9 +22,6 @@
    {% csrf_token %}
    {{ comment_form }}
    <input type="hidden" name="parent" value="{{ comment.id }}">
-   <input type="file" name="attachment" id="file-input-{{ comment.id }}" accept=".jpg,.jpeg,.png,.gif,.txt"><br>
-   <canvas id="canvas-{{ comment.id }}" style="display:none; border:1px solid #ccc; margin-top: 5px;"></canvas>
-   <pre id="text-preview-{{ comment.id }}" style="display:none; background:#f4f4f4; padding:10px;"></pre>
    <button type="submit">Send</button>
 </form>
 
